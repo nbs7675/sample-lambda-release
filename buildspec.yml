@@ -1,0 +1,10 @@
+version: 0.2
+phases:
+  build:
+    commands:
+    # packageコマンドでS3にアップロードする
+      - sam package --template-file template.yml --s3-bucket $S3_ARTIFACT_BUCKET --output-template-file packaged.yml
+
+artifacts:
+  files:
+    - '**/packaged.yml'
